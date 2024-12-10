@@ -12,7 +12,7 @@ app.use(express.json()); // To parse JSON request bodies
 app.get('/get-ai', async (req, res) => {
   try {
     // Default messages for system and user
-    const sm = req.query.um || "";
+    const sm = req.query.sm || "You are an AI assistant";
     const um = req.query.um || "";
     const auto = req.query.auto || true;
     const message = await getChatCompletion(sm, um,auto);
@@ -36,7 +36,7 @@ app.post('/post-ai', async (req, res) => {
     const { sm, um,auto} = req.body;
 
     if (!sm) {
-         sm =  "";
+         sm =  "You are an AI assistant";
     }
     if (!um) {
         um = "";

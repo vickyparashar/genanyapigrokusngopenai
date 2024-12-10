@@ -10,6 +10,11 @@ const openai = new OpenAI({
 
 async function getChatCompletion(systemMessage, userMessage,auto=true) {
   try {
+    
+
+    console.log(systemMessage);
+    console.log(userMessage);
+    console.log(auto);
     const completion = await openai.chat.completions.create({
       model: process.env.OPEN_API_MODEL,
       messages: [
@@ -17,7 +22,6 @@ async function getChatCompletion(systemMessage, userMessage,auto=true) {
         { role: "user", content: userMessage },
       ],
     });
-    console.log(auto);
     console.log(completion.choices[0].message);
     if(auto===true)
     {
