@@ -18,14 +18,18 @@ async function getChatCompletion(systemMessage, userMessage,auto=true) {
       ],
     });
 
-    if(auto)
+    console.log(completion.choices[0].message);
+    if(auto===true)
     {
     let responseContent = completion.choices[0].message.content;
+    console.log(responseContent);
     return formatReviewedContent(responseContent);
     }
     else
     {
-    return completion.choices[0].message;
+      
+      console.log(auto);
+     return completion.choices[0].message;
     }
 
   } catch (error) {
@@ -36,8 +40,8 @@ async function getChatCompletion(systemMessage, userMessage,auto=true) {
 function formatReviewedContent(reviewedContent) {
   const parts = reviewedContent.split(/```[a-zA-Z0-9- ]*/);
   
-  // Return the second part of the split array (index 1)
-  return parts[1] || null; // Fallback to null if the index doesn't exist
+  // Return the second part if it exists, otherwise return the first part
+  return parts[1] || parts[0] || null; // Fallback to null if both parts don't exist
 }
 
 module.exports = { getChatCompletion };
