@@ -42,9 +42,9 @@ app.post('/post-ai', async (req, res) => {
         um = "";
    }
    if (!auto) {
-    auto = true;
+    auto = false;
 }
-    const message = await getChatCompletion(sm, um);
+    const message = await getChatCompletion(sm, um,auto);
     res.json({ message });
   } catch (error) {
     console.error("Error:", error);
