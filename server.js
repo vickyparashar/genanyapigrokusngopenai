@@ -14,8 +14,8 @@ app.get('/get-ai', async (req, res) => {
     // Default messages for system and user
     const sm = req.query.um || "";
     const um = req.query.um || "";
-
-    const message = await getChatCompletion(sm, um);
+    const auto = req.query.auto || true;
+    const message = await getChatCompletion(sm, um,auto);
     res.json({ message });
   } catch (error) {
     console.error("Error:", error);
@@ -26,7 +26,7 @@ app.get('/get-ai', async (req, res) => {
 // POST API - Fetch OpenAI response with custom messages
 app.post('/post-ai', async (req, res) => {
   try {
-    const { sm, um } = req.body;
+    const { sm, um,auto} = req.body;
 
     if (!sm) {
          sm =  "";
@@ -34,6 +34,9 @@ app.post('/post-ai', async (req, res) => {
     if (!um) {
         um = "";
    }
+   if (!auto) {
+    auto = true;
+}
     const message = await getChatCompletion(sm, um);
     res.json({ message });
   } catch (error) {
