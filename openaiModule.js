@@ -17,7 +17,7 @@ async function getChatCompletion(systemMessage, userMessage,auto=true) {
         { role: "user", content: userMessage },
       ],
     });
-
+    console.log(auto);
     console.log(completion.choices[0].message);
     if(auto===true)
     {
@@ -28,7 +28,6 @@ async function getChatCompletion(systemMessage, userMessage,auto=true) {
     else
     {
       
-      console.log(auto);
      return completion.choices[0].message;
     }
 
