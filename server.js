@@ -16,7 +16,14 @@ app.get('/get-ai', async (req, res) => {
     const um = req.query.um || "";
     const auto = req.query.auto || true;
     const message = await getChatCompletion(sm, um,auto);
-    res.json({ message });
+    if(auto===true)
+    {
+     res.send(message);
+    }
+    else
+    {
+     res.json({ message });
+    }
   } catch (error) {
     console.error("Error:", error);
     res.status(500).json({ error: "Internal Server Error" });
