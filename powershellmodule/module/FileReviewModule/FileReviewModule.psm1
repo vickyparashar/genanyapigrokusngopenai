@@ -14,7 +14,7 @@ function Review-FileContent {
 
     $jsonPayload = @{
         messages = @(
-            @{ role = "system"; content = $Instruction+' sReturn only the updated version, without any additional explanation or data.' },
+            @{ role = "system"; content = $Instruction+' Return only the updated version, without any additional explanation or data.' },
             @{ role = "user"; content = "$FilePath \n"+$Content }
         );
         model = "grok-beta";
