@@ -1,0 +1,2 @@
+Review-FileContent -FilePath 'C:\Vicky\Tools\genanyapigrokusngopenai\powershellmodule\samplecode.ps1' -Instruction 'Add concise comments to the code.'
+Import-Module "C:\Vicky\Tools\genanyapigrokusngopenai\powershellmodule\module\FileReviewModule\FileReviewModule.psm1"
