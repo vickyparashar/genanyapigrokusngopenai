@@ -28,7 +28,7 @@ function Review-FileContent {
             "Authorization" = "Bearer $apiKey"
         } -Body $jsonPayload -SkipCertificateCheck
         
-        #Write-Host $response.choices[0].message.content
+        Write-Host $response.choices[0].message.content
         $updatedContent = Format-ReviewedContent -ReviewedContent $response.choices[0].message.content
         if ($null -ne $updatedContent) {
             Set-Content -Path $FilePath -Value $updatedContent
